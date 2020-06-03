@@ -620,3 +620,28 @@ pre tt:after {
     font-size: 100%;
   }
 }
+
+/* Custom */
+
+a:link {
+  color: rebeccapurple;
+  text-decoration: none;
+}
+
+/* visited link */
+a:visited {
+  color: rebeccapurple;
+  text-decoration: none;
+}
+
+/* mouse over link */
+a:hover {
+  color: hotpink;
+  text-decoration: none;
+}
+
+/* selected link */
+a:active {
+  color: rebeccapurple;
+  text-decoration: none;
+}

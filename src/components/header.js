@@ -1,9 +1,8 @@
 import React from "react"
 
 import { Link } from "gatsby"
-import { StaticQuery, graphql } from 'gatsby'
 
-const Header = () => (
+const Header = ({siteMetadata}) => (
   <header
     style={{
       background: `rebeccapurple`,
@@ -18,44 +17,27 @@ const Header = () => (
         padding: `1.45rem 1.0875rem`,
       }}
     >
-      <StaticQuery
-        query={graphql`
-        query {
-          site {
-            siteMetadata {
-              title
-              description
-            }
-          }
-        }
-      `}
-      render={data => <TitleAndDescription data={data} />}
-      />
+      <TitleAndDescription siteMetadata={siteMetadata} />
     </div>
   </header>
 );
 
-const TitleAndDescription = ({data}) => {
-  const title = data.site.siteMetadata.title
-  const description = data.site.siteMetadata.description
+const TitleAndDescription = ({ siteMetadata: { title, description } }) =>  (
+  <>
+    <h1>
+      <Link
+        to="/"
+        style={{
+          color: `white`,
+          textDecoration: `none`,
+        }}
+      >{ title }
+      </Link>
+    </h1>
+    <h3>
+      { description }
+    </h3>
+  </>
+);
 
-  return (
-    <div>
-      <h1>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >{title}
-        </Link>
-      </h1>
-      <h3>
-        {description}
-      </h3>
-    </div>
-  )
-};
-
-export default Header
+export default Header;
