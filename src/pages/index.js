@@ -3,7 +3,7 @@ import React from "react";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
 
-import { Link } from "gatsby";
+import { Link, graphql } from "gatsby";
 
 const IndexPage = ({ data }) => {
   const { edges } = data.allMarkdownRemark;
@@ -11,7 +11,8 @@ const IndexPage = ({ data }) => {
     <>
       <Layout>
         <SEO title="Home" />
-        { edges.map(({ node: { frontmatter } }) => {
+        <h3 style={{ color: 'rebeccapurple' }}>Blog Posts</h3>
+        {edges.map(({ node: { frontmatter } }) => {
           return (
             <div
               key={frontmatter.path}
@@ -31,6 +32,12 @@ const IndexPage = ({ data }) => {
             </div>
           )
         })}
+        <h4 style={{
+          backgroundColor: 'whitesmoke',
+          padding: '15px'
+        }}>
+          <Link to="/tags">Search all tags</Link>
+        </h4>
       </Layout>
     </>
   );
